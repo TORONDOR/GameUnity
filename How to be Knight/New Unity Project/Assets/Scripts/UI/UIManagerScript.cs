@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class UIManagerScript : MonoBehaviour {
 
-    public Animator animator1;
-    public Animator animator2;
+	public Slider Volume;
+
     public void DisableBoolAnimator(Animator anim)
     {
         anim.SetBool("IsDisplayed", false);
@@ -19,4 +20,23 @@ public class UIManagerScript : MonoBehaviour {
     {
         Application.Quit();
     }
+	
+	/*public void SetFullScreen(bool isFullscreen)
+	{
+		if(isFullscreen)
+		{
+			Resolution[] allResolutions = Screen.resolution;
+			Resolution maxResolution = allResolutions[allResolutions.Length - 1];
+			Screen.SetResolution(maxResolution.width, maxResolution.height, true);
+		}	
+		else
+		{
+			SetScreenResolution();
+		}	
+	}*/
+	
+	public void Update()
+	{
+        GetComponent<AudioSource>().volume = Volume.value;
+	}
 }
